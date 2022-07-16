@@ -16,7 +16,7 @@ import com.julgab.dsmeta.repositories.SaleRepository;
 public class SaleService {
 
 	@Autowired
-	private SaleRepository repository;
+	private SaleRepository saleRepository;
 
 	public Page<Sale> findSales(String minDate, String maxDate, Pageable pageable) {
 
@@ -25,7 +25,7 @@ public class SaleService {
 		LocalDate min = minDate.equals("") ? today.minusDays(365) : LocalDate.parse(minDate);
 		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
 
-		return repository.findSales(min, max, pageable);
+		return saleRepository.findSales(min, max, pageable);
 	}
 
 }
